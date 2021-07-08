@@ -1,5 +1,5 @@
 import XCTest
-@testable import harmony_swift
+@testable import harmony
 
 final class harmony_swiftTests: XCTestCase {
     func testExample() {
