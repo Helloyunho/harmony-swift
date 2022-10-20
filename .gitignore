@@ -6,3 +6,5 @@ xcuserdata/
 .swiftpm
 Package.resolved
 /Sources/Playground.playground
+/api_docs
+/endpoint_codegen.ts
