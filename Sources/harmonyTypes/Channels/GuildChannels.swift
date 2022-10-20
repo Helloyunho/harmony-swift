@@ -1,5 +1,5 @@
 //
-//  Guild.swift
+//  GuildChannels.swift
 //  
 //
 //  Created by Helloyunho on 2022/01/30.

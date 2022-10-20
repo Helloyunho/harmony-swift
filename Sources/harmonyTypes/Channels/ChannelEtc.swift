@@ -1,5 +1,5 @@
 //
-//  Etc.swift
+//  ChannelEtc.swift
 //  
 //
 //  Created by Helloyunho on 2022/01/30.

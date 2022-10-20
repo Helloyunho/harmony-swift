@@ -30,22 +30,3 @@ public enum NullableValue<T>: Codable where T: Codable {
         }
     }
 }
-
-@propertyWrapper
-public struct Undefinedable<T>: Codable where T: Codable {
-    
-    public var wrappedValue: T?
-
-    public init(wrappedValue: T?) {
-        self.wrappedValue = wrappedValue
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        switch wrappedValue {
-        case .some(let value):
-            var container = encoder.singleValueContainer()
-            try container.encode(value)
-        case .none: break
-        }
-    }
-}
