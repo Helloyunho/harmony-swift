@@ -27,6 +27,12 @@ public protocol GuildChannelPayload: ChannelPayload {
     var parent: NullableValue<Snowflake> { get set }
 }
 
+public protocol VoiceChannelPayload: GuildChannelPayload {
+    var bitrate: UInt { get set }
+    var userLimit: UInt { get set }
+    var rtcRegion: NullableValue<String> { get set }
+}
+
 public struct GuildTextChannelPayload: GuildChannelPayload, TextChannelPayload {
     public var guildId: Snowflake
     public var name: String
@@ -37,19 +43,33 @@ public struct GuildTextChannelPayload: GuildChannelPayload, TextChannelPayload {
     public var lastMessageId: NullableValue<Snowflake>?
     public var lastPinTimestamp: NullableValue<String>?
     public var id: Snowflake
-    public var type: ChannelType
+    public var type: ChannelType = .GUILD_TEXT
     public var rateLimitPerUser: UInt
     public var topic: NullableValue<String>
     public var defaultAutoArchiveDuration: UInt
 }
 
-public typealias GuildNewsChannelPayload = GuildTextChannelPayload
+public struct GuildAnnouncementChannelPayload: GuildChannelPayload, TextChannelPayload {
+    public var guildId: Snowflake
+    public var name: String
+    public var position: Int
+    public var permissionOverwrites: [OverwritePayload]
+    public var nsfw: Bool
+    public var parent: NullableValue<Snowflake>
+    public var lastMessageId: NullableValue<Snowflake>?
+    public var lastPinTimestamp: NullableValue<String>?
+    public var id: Snowflake
+    public var type: ChannelType = .GUILD_ANNOUNCEMENT
+    public var rateLimitPerUser: UInt
+    public var topic: NullableValue<String>
+    public var defaultAutoArchiveDuration: UInt
+}
 
 public enum VideoQualityMode: UInt8, Codable {
     case auto = 1, full
 }
 
-public struct GuildVoiceChannelPayload: GuildChannelPayload {
+public struct GuildVoiceChannelPayload: VoiceChannelPayload {
     public var guildId: Snowflake
     public var name: String
     public var position: Int
@@ -57,15 +77,23 @@ public struct GuildVoiceChannelPayload: GuildChannelPayload {
     public var nsfw: Bool
     public var parent: NullableValue<Snowflake>
     public var id: Snowflake
-    public var type: ChannelType
+    public var type: ChannelType = .GUILD_VOICE
     public var bitrate: UInt
     public var userLimit: UInt
     public var rtcRegion: NullableValue<String>
     public var videoQualityMode: VideoQualityMode
 }
 
-public typealias CategoryPayload = GuildChannelPayload
-public typealias GuildStoreChannel = GuildChannelPayload
+public struct GuildCategoryPayload: GuildChannelPayload {
+    public var guildId: Snowflake
+    public var name: String
+    public var position: Int
+    public var permissionOverwrites: [OverwritePayload]
+    public var nsfw: Bool
+    public var parent: NullableValue<Snowflake>
+    public var id: Snowflake
+    public var type: ChannelType = .GUILD_CATEGORY
+}
 
 public protocol EditGuildChannelPayload: Codable {
     var name: String? { get set }
@@ -81,7 +109,7 @@ public struct EditGuildStoreChannelPayload: EditGuildChannelPayload {
     public var parentId: NullableValue<Snowflake>?
 }
 
-public struct EditGuildNewsChannelPayload: EditGuildChannelPayload {
+public struct EditGuildAnnouncementChannelPayload: EditGuildChannelPayload {
     public var name: String?
     public var position: NullableValue<Int>?
     public var permissionOverwrites: NullableValue<[OverwritePayload]>?

@@ -38,7 +38,13 @@ public struct GuildPayload: Codable {
     var memberCount: UInt?
 //    var voiceStates: [VoiceStatePayload]?
 //    var members: [GuildMemberPayload]?
-    var channels: [any GuildChannelPayload]?
+//    var channels: [GuildChannelPayload]?
+}
+
+public enum GuildChannelPayloads: Codable {
+    case TEXT(GuildTextChannelPayload)
+    case VOICE(GuildVoiceChannelPayload)
+    case CATEGORY(GuildCategoryPayload)
 }
 
 public enum VerificationLevel: UInt8, Codable {
