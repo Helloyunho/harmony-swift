@@ -10,18 +10,18 @@ import Foundation
 public struct GuildPayload: Codable {
     var id: Snowflake
     var name: String
-    var icon: NullableValue<String>
-    var iconHash: NullableValue<String>?
-    var splash: NullableValue<String>
-    var discoverySplash: NullableValue<String>
+    var icon: Nullable<String>
+    var iconHash: Nullable<String>?
+    var splash: Nullable<String>
+    var discoverySplash: Nullable<String>
     var owner: Bool?
     var ownerId: Snowflake
     var permissions: String?
-    var region: NullableValue<String>?
-    var afkChannelId: NullableValue<Snowflake>
+    var region: Nullable<String>?
+    var afkChannelId: Nullable<Snowflake>
     var afkTimeout: UInt
     var widgetEnabled: Bool
-    var widgetChannelId: NullableValue<String>?
+    var widgetChannelId: Nullable<String>?
     var verificationLevel: VerificationLevel
     var defaultMessageNotifications: DefaultMessageNotificationLevel
     var explicitContentFilter: ExplicitContentFilterLevel
@@ -29,10 +29,10 @@ public struct GuildPayload: Codable {
     var emojis: [EmojiPayload]
     var features: [GuildFeature]
     var mfaLevel: MFALevel
-    var applicationId: NullableValue<Snowflake>
-    var systemChannelId: NullableValue<Snowflake>
+    var applicationId: Nullable<Snowflake>
+    var systemChannelId: Nullable<Snowflake>
     var systemChannelFlags: UInt8
-    var joinedAt: NullableValue<Snowflake>?
+    var joinedAt: Nullable<Snowflake>?
     var large: Bool?
     var unavailable: Bool?
     var memberCount: UInt?

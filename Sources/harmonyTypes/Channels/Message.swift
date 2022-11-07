@@ -72,7 +72,7 @@ public struct MessagePayload: Codable {
 //    public var member: GuildMemberPayload?
     public var content: String
     public var timestamp: String
-    public var editedTimestamp: NullableValue<String>
+    public var editedTimestamp: Nullable<String>
     public var tts: Bool
     public var mentionEveryone: Bool
 //    public var mentions: [UserPayload]
@@ -124,12 +124,12 @@ public struct GetMessageReactionParams {
 
 
 public struct EditMessagePayload: Codable {
-    public var content: NullableValue<String>?
-    public var embeds: NullableValue<[EmbedPayload]>?
-    public var flags: NullableValue<MessageFlags>?
-    public var file: NullableValue<AttachmentPayload>?
-    public var allowedMentions: NullableValue<AllowedMentionPayload>?
-    public var attachments: NullableValue<[AttachmentPayload]>?
+    public var content: Nullable<String>?
+    public var embeds: Nullable<[EmbedPayload]>?
+    public var flags: Nullable<MessageFlags>?
+    public var file: Nullable<AttachmentPayload>?
+    public var allowedMentions: Nullable<AllowedMentionPayload>?
+    public var attachments: Nullable<[AttachmentPayload]>?
 //    public var components: NullableValue<[ComponentPayload]>?
 }
 

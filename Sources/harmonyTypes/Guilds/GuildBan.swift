@@ -9,7 +9,7 @@ import Foundation
 
 public struct GuildBanPayload: Codable {
 //    var user: UserPayload
-    var reason: NullableValue<String>
+    var reason: Nullable<String>
 }
 
 public struct CreateGuildBanPayload: Codable {

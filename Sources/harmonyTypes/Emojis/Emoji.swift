@@ -8,8 +8,8 @@
 import Foundation
 
 public struct EmojiPayload: Codable {
-    public var id: NullableValue<String>
-    public var name: NullableValue<String>
+    public var id: Nullable<String>
+    public var name: Nullable<String>
     public var roles: [Snowflake]?
 //    public var user: UserPayload?
     public var requireColons: Bool?
@@ -26,5 +26,5 @@ public struct CreateGuildEmojiPayload: Codable {
 
 public struct EditGuildEmojiPayload: Codable {
     public var name: String?
-    public var roles: NullableValue<[String]>?
+    public var roles: Nullable<[String]>?
 }

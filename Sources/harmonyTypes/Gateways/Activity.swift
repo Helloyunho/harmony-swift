@@ -10,13 +10,13 @@ import Foundation
 public struct ActivityPayload: Codable {
     public var name: String
     public var type: ActivityType
-    public var url: NullableValue<String>?
+    public var url: Nullable<String>?
     public var created_at: UInt
     public var timestamps: ActivityTimestamps?
     public var applicationId: Snowflake?
-    public var details: NullableValue<String>?
-    public var state: NullableValue<String>?
-    public var emoji: NullableValue<ActivityEmoji>?
+    public var details: Nullable<String>?
+    public var state: Nullable<String>?
+    public var emoji: Nullable<ActivityEmoji>?
     public var party: ActivityParty?
     public var assets: ActivityAsset?
     public var secrets: ActivitySecret?

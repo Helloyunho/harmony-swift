@@ -7,11 +7,157 @@
 
 import Foundation
 
-public struct GatewayPayload<Payload>: Codable where Payload: GatewayDataType {
+public struct GatewayPayload: Codable {
     public var op: GatewayOpcode
-    public var d: NullableValue<Payload>
-    public var s: NullableValue<UInt>
-    public var t: NullableValue<GatewayEventNames>
+    public var d: Nullable<GatewayDataType>
+    public var s: Nullable<UInt>
+    public var t: Nullable<GatewayEventNames>
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: GatewayPayload.CodingKeys.self)
+        self.op = try container.decode(GatewayOpcode.self, forKey: .op)
+        self.s = try container.decode(Nullable<UInt>.self, forKey: .s)
+        self.t = try container.decode(Nullable<GatewayEventNames>.self, forKey: .t)
+        
+        if case let .value(name) = self.t {
+            switch (name) {
+            case .READY: break
+            case .RESUMED:
+                break
+            case .CHANNEL_CREATE:
+                self.d = try container.decode(Nullable<ChannelPayloads>.self, forKey: .d)
+            case .CHANNEL_UPDATE:
+                break
+            case .CHANNEL_DELETE:
+                break
+            case .CHANNEL_PINS_UPDATE:
+                break
+            case .THREAD_CREATE:
+                break
+            case .THREAD_UPDATE:
+                break
+            case .THREAD_DELETE:
+                break
+            case .THREAD_LIST_SYNC:
+                break
+            case .THREAD_MEMBER_UPDATE:
+                break
+            case .THREAD_MEMBERS_UPDATE:
+                break
+            case .GUILD_CREATE:
+                break
+            case .GUILD_UPDATE:
+                break
+            case .GUILD_DELETE:
+                break
+            case .GUILD_BAN_ADD:
+                break
+            case .GUILD_BAN_REMOVE:
+                break
+            case .GUILD_EMOJIS_UPDATE:
+                break
+            case .GUILD_STICKERS_UPDATE:
+                break
+            case .GUILD_INTEGRATIONS_UPDATE:
+                break
+            case .GUILD_MEMBER_ADD:
+                break
+            case .GUILD_MEMBER_REMOVE:
+                break
+            case .GUILD_MEMBER_UPDATE:
+                break
+            case .GUILD_MEMBERS_CHUNK:
+                break
+            case .GUILD_ROLE_CREATE:
+                break
+            case .GUILD_ROLE_UPDATE:
+                break
+            case .GUILD_ROLE_DELETE:
+                break
+            case .GUILD_SCHEDULED_EVENT_CREATE:
+                break
+            case .GUILD_SCHEDULED_EVENT_UPDATE:
+                break
+            case .GUILD_SCHEDULED_EVENT_DELETE:
+                break
+            case .GUILD_SCHEDULED_EVENT_USER_ADD:
+                break
+            case .GUILD_SCHEDULED_EVENT_USER_REMOVE:
+                break
+            case .INTEGRATION_CREATE:
+                break
+            case .INTEGRATION_UPDATE:
+                break
+            case .INTEGRATION_DELETE:
+                break
+            case .INTERACTION_CREATE:
+                break
+            case .INVITE_CREATE:
+                break
+            case .INVITE_DELETE:
+                break
+            case .MESSAGE_CREATE:
+                break
+            case .MESSAGE_UPDATE:
+                break
+            case .MESSAGE_DELETE:
+                break
+            case .MESSAGE_DELETE_BULK:
+                break
+            case .MESSAGE_REACTION_ADD:
+                break
+            case .MESSAGE_REACTION_REMOVE:
+                break
+            case .MESSAGE_REACTION_REMOVE_ALL:
+                break
+            case .MESSAGE_REACTION_REMOVE_EMOJI:
+                break
+            case .PRESENCE_UPDATE:
+                break
+            case .STAGE_INSTANCE_CREATE:
+                break
+            case .STAGE_INSTANCE_DELETE:
+                break
+            case .STAGE_INSTANCE_UPDATE:
+                break
+            case .TYPING_START:
+                break
+            case .USER_UPDATE:
+                break
+            case .VOICE_STATE_UPDATE:
+                break
+            case .VOICE_SERVER_UPDATE:
+                break
+            case .WEBHOOKS_UPDATE:
+                break
+            }
+        } else {
+            switch (self.op) {
+            case .HELLO:
+                self.d = try container.decode(Nullable<GatewayHelloPayload>.self, forKey: .d)
+            case .DISPATCH:
+                break
+            case .HEARTBEAT:
+                break
+            case .IDENTIFY:
+                break
+            case .PRESENCE_UPDATE:
+                break
+            case .VOICE_STATE_UPDATE:
+                break
+            case .RESUME:
+                break
+            case .RECONNECT:
+                break
+            case .REQUEST_GUILD_MEMBERS:
+                break
+            case .INVALID_SESSION:
+                break
+            case .HEARTBEAT_ACK:
+                break
+            }
+        }
+    }
 }
 
 public enum GatewayOpcode: UInt8, Codable {

@@ -10,30 +10,30 @@ import Foundation
 public struct GuildPreviewPayload: Codable {
     var id: String
     var name: String
-    var icon: NullableValue<String>
-    var splash: NullableValue<String>
-    var discoverySplash: NullableValue<String>
+    var icon: Nullable<String>
+    var splash: Nullable<String>
+    var discoverySplash: Nullable<String>
     var emojis: [EmojiPayload]
 //    var features: [GuildFeature]
     var approximateMemberCount: UInt
     var approximatePresenceCount: UInt
-    var description: NullableValue<String>
+    var description: Nullable<String>
 }
 
 public struct GuildWidgetPayload: Codable {
     var enabled: Bool
-    var channelId: NullableValue<String>
+    var channelId: Nullable<String>
 }
 
 public struct WelcomeScreenChannelPayload: Codable {
     var channelId: String
     var description: String
-    var emojiId: NullableValue<String>
-    var emojiName: NullableValue<String>
+    var emojiId: Nullable<String>
+    var emojiName: Nullable<String>
 }
 
 public struct WelcomeScreenPayload: Codable {
-    var description: NullableValue<String>
+    var description: Nullable<String>
     var welcomeChannels: [WelcomeScreenChannelPayload]
 }
 
@@ -67,15 +67,15 @@ public struct GetGuildWidgetImageParams: Codable {
 }
 
 public struct EditWelcomeScreenPayload: Codable {
-    var enabled: NullableValue<Bool>?
-    var welcomeChannels: NullableValue<[WelcomeScreenChannelPayload]>?
-    var description: NullableValue<String>?
+    var enabled: Nullable<Bool>?
+    var welcomeChannels: Nullable<[WelcomeScreenChannelPayload]>?
+    var description: Nullable<String>?
 }
 
 public struct EditCurrentUserVoiceStatePayload: Codable {
     var channelId: String
     var suppress: Bool?
-    var requestToSpeakTimestamp: NullableValue<ISO8601Decoder>?
+    var requestToSpeakTimestamp: Nullable<ISO8601Decoder>?
 }
 
 public struct EditUserVoiceStatePayload: Codable {

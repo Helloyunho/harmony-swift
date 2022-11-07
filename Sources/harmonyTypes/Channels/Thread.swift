@@ -28,13 +28,13 @@ public struct GuildThreadChannelPayload: GuildChannelPayload, TextChannelPayload
     public var position: Int
     public var permissionOverwrites: [OverwritePayload]
     public var nsfw: Bool
-    public var parent: NullableValue<Snowflake>
-    public var lastMessageId: NullableValue<Snowflake>?
-    public var lastPinTimestamp: NullableValue<String>?
+    public var parent: Nullable<Snowflake>
+    public var lastMessageId: Nullable<Snowflake>?
+    public var lastPinTimestamp: Nullable<String>?
     public var id: Snowflake
     public var type: ChannelType
     public var rateLimitPerUser: UInt
-    public var topic: NullableValue<String>
+    public var topic: Nullable<String>
     public var defaultAutoArchiveDuration: UInt
     public var messageCount: UInt
     public var memberCount: UInt
@@ -49,7 +49,7 @@ public struct EditGuildThreadChannelPayload: Codable {
     public var autoArchiveDuration: UInt?
     public var locked: Bool?
     public var invitable: Bool?
-    public var rateLimitPerUser: NullableValue<UInt>?
+    public var rateLimitPerUser: Nullable<UInt>?
     public var flags: UInt?
 }
 
